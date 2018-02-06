@@ -16,20 +16,18 @@
 
 package cn.nekocode.items;
 
-import java.util.List;
-
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-public interface ItemViewSelector {
+public interface ItemViewSelector<T> {
 
-    Item select(int position, List<Object> list);
+    Class<? extends ItemView<T>> select(T data);
 
 
-    class SingleItemViewSelector implements ItemViewSelector {
+    class DEFAULT implements ItemViewSelector {
 
         @Override
-        public Item select(int position, List<Object> list) {
+        public Class<ItemView> select(Object data) {
             return null;
         }
     }

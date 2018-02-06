@@ -24,7 +24,6 @@ import cn.nekocode.items.*;
 public @interface ItemBinding {
 
     Data data();
-
     Views views();
 
     @interface Data {
@@ -32,9 +31,9 @@ public @interface ItemBinding {
     }
 
     @interface Views {
-        Class<? extends ItemView> value();
+        Class<? extends ItemView>[] value();
 
         Class<? extends ItemViewSelector> selector()
-                default ItemViewSelector.SingleItemViewSelector.class;
+                default ItemViewSelector.DEFAULT.class;
     }
 }

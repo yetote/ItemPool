@@ -20,8 +20,5 @@ package cn.nekocode.items.annotation;
  * @author nekocode (nekocode.cn@gmail.com)
  */
 public @interface Items {
-    /*
-      为 A 生成一个 AItemData 的 Wrap？
-     */
-    Class value() default Object.class;
+    ItemBinding[] value();
 }
