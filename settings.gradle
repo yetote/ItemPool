@@ -1,1 +1,1 @@
-include ':sample', ':lib-itempool'
+include ':example', ':items'
