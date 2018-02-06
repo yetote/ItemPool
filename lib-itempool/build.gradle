@@ -5,11 +5,10 @@ group='com.github.nekocode'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION.toInteger()
-    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 26
     }
     lintOptions {
         abortOnError false
