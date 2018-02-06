@@ -16,7 +16,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     provided "com.android.support:appcompat-v7:$SUPPORT_LIBS_VERSION"
     provided "com.android.support:recyclerview-v7:$SUPPORT_LIBS_VERSION"
 }

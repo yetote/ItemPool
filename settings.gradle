@@ -1,1 +1,1 @@
-include ':example', ':items'
+include ':example', ':items', ':items-processor'
