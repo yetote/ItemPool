@@ -48,24 +48,21 @@ dependencies {
     aar "com.android.support:recyclerview-v7:$SUPPORT_LIBS_VERSION"
 }
 
-task resolveAarDeps {
-    def artifacts = configurations.aar.incoming.artifactView {
-        attributes { it.attribute(artifactType, 'jar') }
-        if (project.hasProperty("lenient")) {
-            lenient(true)
-        }
-    }.artifacts
+/**
+ * Copy the jars extracted from aar to the 'build' directory and import them
+ */
+task copyJarAndImport {
+    def destPath = "${buildDir}/aar-jars"
 
-    artifacts.collect { artifact ->
+    configurations.aar.incoming.artifacts.collect { artifact ->
         copy {
-            println "__" + artifact.file.absolutePath
             from artifact.file
             rename { name -> "${artifact.id.componentIdentifier}.jar".replaceAll("[/:*?\"<>|]", "_") }
-            into "${buildDir}/aars"
+            into destPath
         }
     }
 
     dependencies {
-        compileOnly fileTree(dir: "${buildDir}/aars", include: ['*.jar'])
+        compileOnly fileTree(dir: destPath, include: ['*.jar'])
     }
 }
