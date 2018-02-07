@@ -20,7 +20,6 @@ public class ItemsProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-
         return true;
     }
 }
