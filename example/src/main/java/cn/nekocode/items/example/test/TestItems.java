@@ -19,13 +19,18 @@ import cn.nekocode.items.annotation.Items;
                 }, selector = TestItemViewSelector.class)
         )
 })
-public interface TestItems {
+public abstract class TestItems {
 
-    List list();
+    abstract List list();
 
     // Map map();
 
-    RecyclerView.Adapter adapter();
+    abstract RecyclerView.Adapter adapter();
 
     // ListAdapter adapter2();
+
+
+    void select(int position) {
+
+    }
 }

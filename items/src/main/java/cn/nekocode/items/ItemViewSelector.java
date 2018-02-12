@@ -21,14 +21,14 @@ package cn.nekocode.items;
  */
 public interface ItemViewSelector<T> {
 
-    Class<? extends ItemView<T>> select(T data);
+    int select(T data);
 
 
     class DEFAULT implements ItemViewSelector {
 
         @Override
-        public Class<ItemView> select(Object data) {
-            return null;
+        public int select(Object data) {
+            return -1;
         }
     }
 }
