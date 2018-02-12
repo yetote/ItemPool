@@ -16,11 +16,20 @@
 
 package cn.nekocode.items.annotation;
 
-import cn.nekocode.items.*;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import cn.nekocode.items.ItemView;
+import cn.nekocode.items.ItemViewSelector;
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.RetentionPolicy.CLASS;
 
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
+@Retention(CLASS)
+@Target(ANNOTATION_TYPE)
 public @interface ItemBinding {
 
     Data data();
