@@ -16,6 +16,11 @@
 
 package cn.nekocode.items.annotation;
 
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -40,10 +45,30 @@ public @interface ItemBinding {
     }
 
     @interface Views {
-        
-        Class<? extends ItemView>[] value();
+        // 二选一
+        Class<? extends ItemViewSelector> selector() default NoneSelector.class;
+        Class<? extends ItemView>[] value() default NoneItemView.class;
+    }
 
-        Class<? extends ItemViewSelector> selector()
-                default ItemViewSelector.DEFAULT.class;
+    class NoneSelector implements ItemViewSelector {
+
+        @Override
+        public int select(Object data, int dataType) {
+            return 0;
+        }
+    }
+
+    class NoneItemView implements ItemView {
+
+        @NonNull
+        @Override
+        public View onCreateItemView(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+            return null;
+        }
+
+        @Override
+        public void onBindData(@NonNull Object data) {
+
+        }
     }
 }

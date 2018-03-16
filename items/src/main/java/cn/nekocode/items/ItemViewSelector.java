@@ -24,12 +24,4 @@ public interface ItemViewSelector<T> {
     // 返回 ViewType
     int select(T data, int dataType);
 
-
-    class DEFAULT implements ItemViewSelector {
-
-        @Override
-        public int select(Object data, int dataType) {
-            return 0;
-        }
-    }
 }
