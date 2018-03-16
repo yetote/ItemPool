@@ -16,20 +16,27 @@ import cn.nekocode.items.annotation.Items;
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-//@Items({
-//        @ItemBinding(
-//                data = @ItemBinding.Data(TestData.class),
-//                views = @ItemBinding.Views(value = {
-//                        TestItemViewA.class,
-//                        TestItemViewB.class,
-//                }, selector = TestItemViewSelector.class)
-//        )
-//})
+@Items({
+        @ItemBinding(
+                data = @ItemBinding.Data(TestData.class),
+                views = @ItemBinding.Views(value = {
+                        TestItemViewA.class,
+                        TestItemViewB.class,
+                }, selector = TestItemViewSelector.class)
+        ),
+        @ItemBinding(
+                data = @ItemBinding.Data(TestData.class),
+                views = @ItemBinding.Views(value = {
+                        TestItemViewB.class,
+                })
+        ),
+})
 public abstract class TestItems {
 
     static TestItems create() {
         return null;
     }
+
 
     abstract List list();
     abstract ArrayList list2();

@@ -40,6 +40,7 @@ public @interface ItemBinding {
     }
 
     @interface Views {
+        
         Class<? extends ItemView>[] value();
 
         Class<? extends ItemViewSelector> selector()
