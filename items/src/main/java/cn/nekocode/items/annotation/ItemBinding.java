@@ -47,7 +47,7 @@ public @interface ItemBinding {
     @interface Views {
         // 二选一
         Class<? extends ItemViewSelector> selector() default NoneSelector.class;
-        Class<? extends ItemView>[] value() default NoneItemView.class;
+        Class<? extends ItemView> value() default NoneItemView.class;
     }
 
     class NoneSelector implements ItemViewSelector {

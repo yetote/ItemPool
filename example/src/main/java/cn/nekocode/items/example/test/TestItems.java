@@ -19,16 +19,11 @@ import cn.nekocode.items.annotation.Items;
 @Items({
         @ItemBinding(
                 data = @ItemBinding.Data(TestData.class),
-                views = @ItemBinding.Views(value = {
-                        TestItemViewA.class,
-                        TestItemViewB.class,
-                }, selector = TestItemViewSelector.class)
+                views = @ItemBinding.Views(selector = TestItemViewSelector.class)
         ),
         @ItemBinding(
                 data = @ItemBinding.Data(TestData.class),
-                views = @ItemBinding.Views(value = {
-                        TestItemViewB.class,
-                })
+                views = @ItemBinding.Views(TestItemViewA.class)
         ),
 })
 public abstract class TestItems {
