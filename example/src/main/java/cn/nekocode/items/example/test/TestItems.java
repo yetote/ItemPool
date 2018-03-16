@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
+import cn.nekocode.items.ItemData;
 import cn.nekocode.items.annotation.ItemBinding;
 import cn.nekocode.items.annotation.Items;
 
@@ -19,18 +20,21 @@ import cn.nekocode.items.annotation.Items;
                 }, selector = TestItemViewSelector.class)
         )
 })
-public abstract class TestItems {
+public interface TestItems {
 
-    abstract List list();
+    List list();
 
     // Map map();
 
-    abstract RecyclerView.Adapter adapter();
+    RecyclerView.Adapter adapter();
 
     // ListAdapter adapter2();
 
 
-    void select(int position) {
-
+    class ViewTypeChooser {
+        public void getViewType(ItemData<TestData> data) {
+            data.selector().select(data.data());
+        }
     }
+
 }

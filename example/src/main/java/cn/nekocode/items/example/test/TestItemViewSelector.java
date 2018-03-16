@@ -7,12 +7,34 @@ import cn.nekocode.items.SelectResult;
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-public abstract class TestItemViewSelector implements ItemViewSelector<TestData> {
+public class TestItemViewSelector implements ItemViewSelector<TestData> {
 
-    abstract int TestItemViewA();
-    abstract int TestItemViewB();
+
+    interface ViewTypeOfData {
+        // 自动把某个类型数据的所有 ViewType 给收集起来
+        int TestItemViewA();
+        int TestItemViewB();
+    }
+
+    public static class ViewTypes {
+        public ViewTypeOfData getViewTypeOfData() {
+            return new ViewTypeOfData() {
+
+                @Override
+                public int TestItemViewA() {
+                    return 0;
+                }
+
+                @Override
+                public int TestItemViewB() {
+                    return 0;
+                }
+            };
+        }
+    }
 
     public int select(TestData data) {
-        return data.a ? TestItemViewA() : TestItemViewB();
+        ViewTypeOfData viewTyps = new ViewTypes().getViewTypeOfData();
+        return data.a ? viewTyps.TestItemViewA() : viewTyps.TestItemViewB();
     }
 }
