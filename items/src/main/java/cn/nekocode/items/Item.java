@@ -81,9 +81,9 @@ public abstract class Item<T> {
     }
 
     public void event(int action, @Nullable Object data) {
-        if (eventHandler != null) {
-            eventHandler.onEvent(new ItemEvent(this, action, data));
-        }
+//        if (eventHandler != null) {
+//            eventHandler.onEvent(new ItemEvent(this, action, data));
+//        }
     }
 
 

@@ -16,7 +16,6 @@
 package cn.nekocode.items;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
@@ -45,12 +44,6 @@ public final class ItemPool extends ArrayList<Object> {
         mapOfType.put(dataClass, type);
         mapOfDataClass.put(itemClass, dataClass);
         mapOfItemClass.put(type.getTypeId(), itemClass);
-    }
-
-    public void onEvent(@NonNull Class<? extends Item> itemClass, @Nullable ItemEventHandler handler) {
-        final Class dataClass = mapOfDataClass.get(itemClass);
-        final ItemType itemType = mapOfType.get(dataClass);
-        itemType.handler = handler;
     }
 
     @NonNull
@@ -125,10 +118,6 @@ public final class ItemPool extends ArrayList<Object> {
 
         public Class<? extends Item> getItemClass() {
             return itemClass;
-        }
-
-        public ItemEventHandler getHandler() {
-            return handler;
         }
     }
 }

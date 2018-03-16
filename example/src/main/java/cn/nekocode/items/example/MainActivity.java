@@ -7,9 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import cn.nekocode.items.Item;
-import cn.nekocode.items.ItemEvent;
-import cn.nekocode.items.ItemEventHandler;
 import cn.nekocode.items.ItemPool;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,34 +35,5 @@ public class MainActivity extends AppCompatActivity {
         itemPool.add("G");
 
         recyclerView.setAdapter(itemPool.getAdapter());
-
-        itemPool.onEvent(TextItem.class, new ItemEventHandler() {
-            @Override
-            public void onEvent(@NonNull ItemEvent event) {
-                switch (event.getAction()) {
-                    case Item.EVENT_ITEM_CLICK:
-                        Toast.makeText(MainActivity.this,
-                                "You just clicked item:" + event.getData() + ".", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
-
-        itemPool.onEvent(HeaderItem.class, new ItemEventHandler() {
-            @Override
-            public void onEvent(@NonNull ItemEvent event) {
-                switch (event.getAction()) {
-                    case Item.EVENT_ITEM_CLICK:
-                        Toast.makeText(MainActivity.this,
-                                "You just clicked the header.", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case HeaderItem.EVENT_TEXT_CLICK:
-                        Toast.makeText(MainActivity.this,
-                                "You just clicked the TextView.", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
     }
 }

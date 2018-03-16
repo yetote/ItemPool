@@ -20,7 +20,25 @@ import android.support.annotation.NonNull;
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-public interface ItemEventHandler {
+public class ItemEventHandler {
 
-    void onEvent(@NonNull ItemEvent event);
+    public void onEvent(int viewType, int what, Object obj) {
+
+    }
+
+    public void onEvent(int viewType, int what) {
+
+    }
+
+    public void addListener(int viewType) {
+
+    }
+
+    public void addListener(int viewType, int what) {
+
+    }
+
+    public void removeListener() {
+
+    }
 }

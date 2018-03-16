@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 import cn.nekocode.items.GetDataFunction;
 import cn.nekocode.items.ItemData;
+import cn.nekocode.items.ItemEventHandler;
 import cn.nekocode.items.annotation.ItemBinding;
 import cn.nekocode.items.annotation.Items;
 
@@ -31,7 +32,7 @@ public abstract class TestItems {
     }
 
     abstract List list();
-    abstract ArrayList arrayList();
+    abstract ArrayList list2();
 
 
     // 如果是自定义数据类型的话，需要定义 getData 方法
@@ -42,13 +43,6 @@ public abstract class TestItems {
     // ListAdapter adapter2();
 
 
-    abstract Event listeners();
-
-
-    interface Event {
-        int clicked();
-
-    }
-
+    abstract ItemEventHandler handler();
 
 }
