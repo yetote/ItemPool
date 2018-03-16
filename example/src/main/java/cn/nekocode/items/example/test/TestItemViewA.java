@@ -12,6 +12,10 @@ import cn.nekocode.items.ItemView;
  */
 public class TestItemViewA implements ItemView<TestData> {
 
+    static int getViewType() {
+        return 123; // 用户自己从 ViewTypes 里取
+    }
+
     @NonNull
     @Override
     public View onCreateItemView(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {

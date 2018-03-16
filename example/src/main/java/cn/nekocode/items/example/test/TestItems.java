@@ -2,6 +2,7 @@ package cn.nekocode.items.example.test;
 
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -25,9 +26,13 @@ import cn.nekocode.items.annotation.Items;
 //})
 public abstract class TestItems {
 
-    abstract List list();
+    static TestItems create() {
+        return null;
+    }
 
-    // Map map();
+    abstract List list();
+    abstract ArrayList arrayList();
+
 
     // 如果是自定义数据类型的话，需要定义 getData 方法
     abstract Map map(GetDataFunction<Map> getData);
@@ -45,9 +50,5 @@ public abstract class TestItems {
 
     }
 
-    static class craete {
-        static void test() {
 
-        }
-    }
 }
