@@ -5,5 +5,6 @@ package cn.nekocode.items;
  */
 public interface ItemData<T> {
     T data();
+    int dataType();
     ItemViewSelector<T> selector();
 }

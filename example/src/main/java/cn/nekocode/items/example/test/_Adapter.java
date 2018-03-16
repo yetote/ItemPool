@@ -13,7 +13,6 @@ import cn.nekocode.items.ItemData;
  */
 public class _Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<ItemData> list = new ArrayList<>();
-    TestItemViewSelector selector = new TestItemViewSelector();
 
 
     @Override
@@ -26,10 +25,14 @@ public class _Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     }
 
+    private ItemData getData(List<ItemData> list, int position) {
+        return list.get(position);
+    }
+
     @Override
     public int getItemViewType(int position) {
-        ItemData data = list.get(position);
-        return data.selector().select(data.data());
+        ItemData data = getData(list, position); // 优化
+        return data.selector().select(data.data(), 123 /* 返回 DataType */);
     }
 
     @Override

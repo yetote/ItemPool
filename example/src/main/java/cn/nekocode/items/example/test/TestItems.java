@@ -3,7 +3,10 @@ package cn.nekocode.items.example.test;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
+import cn.nekocode.items.GetDataFunction;
 import cn.nekocode.items.ItemData;
 import cn.nekocode.items.annotation.ItemBinding;
 import cn.nekocode.items.annotation.Items;
@@ -11,30 +14,40 @@ import cn.nekocode.items.annotation.Items;
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-@Items({
-        @ItemBinding(
-                data = @ItemBinding.Data(TestData.class),
-                views = @ItemBinding.Views(value = {
-                        TestItemViewA.class,
-                        TestItemViewB.class,
-                }, selector = TestItemViewSelector.class)
-        )
-})
-public interface TestItems {
+//@Items({
+//        @ItemBinding(
+//                data = @ItemBinding.Data(TestData.class),
+//                views = @ItemBinding.Views(value = {
+//                        TestItemViewA.class,
+//                        TestItemViewB.class,
+//                }, selector = TestItemViewSelector.class)
+//        )
+//})
+public abstract class TestItems {
 
-    List list();
+    abstract List list();
 
     // Map map();
 
-    RecyclerView.Adapter adapter();
+    // 如果是自定义数据类型的话，需要定义 getData 方法
+    abstract Map map(GetDataFunction<Map> getData);
+
+    abstract RecyclerView.Adapter adapter();
 
     // ListAdapter adapter2();
 
 
-    class ViewTypeChooser {
-        public void getViewType(ItemData<TestData> data) {
-            data.selector().select(data.data());
-        }
+    abstract Event listeners();
+
+
+    interface Event {
+        int clicked();
+
     }
 
+    static class craete {
+        static void test() {
+
+        }
+    }
 }

@@ -21,14 +21,7 @@ package cn.nekocode.items;
  */
 public interface ItemViewSelector<T> {
 
-    int select(T data);
+    // 返回 ViewType
+    int select(T data, int viewType);
 
-
-    class DEFAULT implements ItemViewSelector {
-
-        @Override
-        public int select(Object data) {
-            return -1;
-        }
-    }
 }
