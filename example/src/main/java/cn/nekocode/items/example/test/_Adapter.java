@@ -32,11 +32,16 @@ public class _Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         ItemData data = getData(list, position); // 优化
-        return data.selector().select(data.data(), 123 /* 返回 DataType */);
+        return data.selector().select(data.data(), data.dataType());
     }
 
     @Override
     public int getItemCount() {
         return list.size();
     }
+
+
+    public static final int DATA_TYPE_TESTDATA = 1;
+    public static final int VIEW_TYPE_ITEMA = 1;
+    public static final int VIEW_TYPE_ITEMB = 2;
 }
