@@ -25,6 +25,7 @@ import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
 import cn.nekocode.items.annotation.ItemBinding;
+import cn.nekocode.items.annotation.Items;
 
 /**
  * @author nekocode (nekocode.cn@gmail.com)
@@ -56,10 +57,10 @@ public class ItemsProcessor extends AbstractProcessor {
             /**
              * 1- Find all annotated element
              */
-            for (Element element : roundEnvironment.getElementsAnnotatedWith(ItemBinding.class)) {
+            for (Element element : roundEnvironment.getElementsAnnotatedWith(Items.class)) {
 
                 if (element.getKind() != ElementKind.CLASS) {
-                    messager.printMessage(Diagnostic.Kind.ERROR, "Can be applied to class.");
+                    messager.printMessage(Diagnostic.Kind.ERROR, "Can only be applied to class.");
                     return true;
                 }
 

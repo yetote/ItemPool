@@ -10,7 +10,7 @@ import cn.nekocode.items.ItemView;
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-public class TestItemViewB implements ItemView<TestData> {
+public class TestItemViewB extends ItemView<TestData2> {
 
     @NonNull
     @Override
@@ -19,7 +19,7 @@ public class TestItemViewB implements ItemView<TestData> {
     }
 
     @Override
-    public void onBindData(@NonNull TestData data) {
+    public void onBindData(@NonNull TestData2 data) {
 
     }
 }

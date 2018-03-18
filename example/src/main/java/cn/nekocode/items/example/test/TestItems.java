@@ -19,32 +19,28 @@ import cn.nekocode.items.annotation.Items;
 @Items({
         @ItemBinding(
                 data = @ItemBinding.Data(TestData.class),
-                views = @ItemBinding.Views(selector = TestItemViewSelector.class)
+                views = @ItemBinding.Views(TestItemView.class)
         ),
         @ItemBinding(
-                data = @ItemBinding.Data(TestData.class),
-                views = @ItemBinding.Views(TestItemViewA.class)
+                data = @ItemBinding.Data(TestData2.class),
+                views = @ItemBinding.Views(selector = TestItemViewSelector.class)
         ),
 })
-public abstract class TestItems {
-
-    static TestItems create() {
-        return null;
-    }
+public interface TestItems {
 
 
-    abstract List list();
-    abstract ArrayList list2();
+    List list();
+    ArrayList list2();
 
 
     // 如果是自定义数据类型的话，需要定义 getData 方法
-    abstract Map map(GetDataFunction<Map> getData);
+    Map map(GetDataFunction<Map> getData);
 
-    abstract RecyclerView.Adapter adapter();
+    RecyclerView.Adapter adapter();
 
     // ListAdapter adapter2();
 
 
-    abstract ItemEventHandler handler();
+    ItemEventHandler handler();
 
 }

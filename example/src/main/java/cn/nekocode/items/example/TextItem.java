@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.nekocode.items.Item;
+import cn.nekocode.items.ItemView;
 
-public class TextItem extends Item<String> {
+public class TextItem extends ItemView<String> {
     private TextView textView;
 
     @NonNull

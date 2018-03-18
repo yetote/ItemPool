@@ -53,12 +53,12 @@ public @interface ItemBinding {
     class NoneSelector implements ItemViewSelector {
 
         @Override
-        public int select(Object data, int dataType) {
+        public int select(Object data) {
             return 0;
         }
     }
 
-    class NoneItemView implements ItemView {
+    class NoneItemView extends ItemView {
 
         @NonNull
         @Override

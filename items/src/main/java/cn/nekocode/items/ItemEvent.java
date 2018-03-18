@@ -24,17 +24,17 @@ import android.support.annotation.Nullable;
 public class ItemEvent {
     private int action;
     private Object data;
-    private Item item;
+    private ItemView itemView;
 
-    public ItemEvent(@NonNull Item item, int action, @Nullable Object data) {
+    public ItemEvent(@NonNull ItemView itemView, int action, @Nullable Object data) {
         this.action = action;
         this.data = data;
-        this.item = item;
+        this.itemView = itemView;
     }
 
     @NonNull
-    public Item getItem() {
-        return item;
+    public ItemView getItemView() {
+        return itemView;
     }
 
     public int getAction() {

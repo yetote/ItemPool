@@ -31,16 +31,16 @@ class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final Class<? extends Item> itemClass = itemPool.getItemClass(viewType);
+        final Class<? extends ItemView> itemClass = itemPool.getItemClass(viewType);
         final ItemPool.ItemType itemType = itemPool.getItemType(itemClass);
-        return newItem(itemClass).onCreateViewHolder(this, itemType.getHandler(), parent);
+        return newItem(itemClass).onCreateViewHolder(this, null, parent); // todo
     }
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final Object data = itemPool.get(position);
-        final Item item = ((Item.ViewHolder) holder).item;
-        item._onBindData(data);
+        final ItemView itemView = ((ItemView.ViewHolder) holder)._itemView;
+        itemView._onBindData(data);
     }
 
     @Override
@@ -53,13 +53,13 @@ class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return itemPool.getItemType(position);
     }
 
-    private static <T extends Item> T newItem(Class<T> itemClass) {
-        Item item;
+    private static <T extends ItemView> T newItem(Class<T> itemClass) {
+        ItemView itemView;
         try {
-            item = itemClass.newInstance();
+            itemView = itemClass.newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
-        return (T) item;
+        return (T) itemView;
     }
 }

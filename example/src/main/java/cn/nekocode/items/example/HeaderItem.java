@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.nekocode.items.Item;
+import cn.nekocode.items.ItemView;
 
-public class HeaderItem extends Item<Header> implements View.OnClickListener {
+public class HeaderItem extends ItemView<Header> implements View.OnClickListener {
     public static final int EVENT_TEXT_CLICK = 1;
 
     private TextView textView;

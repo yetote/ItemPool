@@ -31,12 +31,12 @@ public final class ItemPool extends ArrayList<Object> {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     private final HashMap<Class, ItemType> mapOfType = new HashMap<>();
-    private final HashMap<Class<? extends Item>, Class> mapOfDataClass = new HashMap<>();
-    private final SparseArray<Class<? extends Item>> mapOfItemClass = new SparseArray<>();
+    private final HashMap<Class<? extends ItemView>, Class> mapOfDataClass = new HashMap<>();
+    private final SparseArray<Class<? extends ItemView>> mapOfItemClass = new SparseArray<>();
     private final ItemAdapter internalAdapter = new ItemAdapter(this);
 
 
-    public void addType(@NonNull Class<? extends Item> itemClass) {
+    public void addType(@NonNull Class<? extends ItemView> itemClass) {
         final ParameterizedType parameterizedType = (ParameterizedType) itemClass.getGenericSuperclass();
         final Class dataClass = (Class) parameterizedType.getActualTypeArguments()[0];
 
@@ -93,21 +93,21 @@ public final class ItemPool extends ArrayList<Object> {
         return type.getTypeId();
     }
 
-    Class<? extends Item> getItemClass(int typeId) {
+    Class<? extends ItemView> getItemClass(int typeId) {
         return mapOfItemClass.get(typeId);
     }
 
-    ItemType getItemType(Class<? extends Item> itemClass) {
+    ItemType getItemType(Class<? extends ItemView> itemClass) {
         final Class dataClass = mapOfDataClass.get(itemClass);
         return mapOfType.get(dataClass);
     }
 
     static class ItemType {
         private final int typeId;
-        private final Class<? extends Item> itemClass;
+        private final Class<? extends ItemView> itemClass;
         private ItemEventHandler handler;
 
-        private ItemType(Class<? extends Item> itemClass) {
+        private ItemType(Class<? extends ItemView> itemClass) {
             typeId = ID_COUNTER.getAndIncrement();
             this.itemClass = itemClass;
         }
@@ -116,7 +116,7 @@ public final class ItemPool extends ArrayList<Object> {
             return typeId;
         }
 
-        public Class<? extends Item> getItemClass() {
+        public Class<? extends ItemView> getItemClass() {
             return itemClass;
         }
     }
